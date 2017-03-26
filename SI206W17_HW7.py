@@ -151,7 +151,7 @@ more_than_2_rts = cur.fetchall()
 first_rt = "SELECT * from Tweets WHERE instr(tweet_text, 'RT')"
 cur.execute(first_rt)
 first_rt = cur.fetchone()
-first_rt = first_rt[1]
+first_rt = first_rt[3]
 
 
 # Finally, done with database stuff for a bit: write a line of code to close the cursor to the database.
@@ -181,7 +181,7 @@ conn.close()
 # definitely fine to write it with multiple lines, too, which will be much easier and clearer.
 
 def get_twitter_users(tweet):
-	return set(re.findall("@[0-9A-Z_a-z]+", tweet))
+	return set(re.findall("@([0-9A-Z_a-z]+)", tweet))
 
 #########
 print("*** OUTPUT OF TESTS BELOW THIS LINE ***")
